@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -26,11 +27,15 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public List<Transaction> getAllTransaction() {
-        return null;
+        return this.repository.findAll();
     }
 
     @Override
     public void deleteTransaction(Long id) {
-
+        Optional<Transaction> optional = this.repository.findById(id);
+        if(optional.isEmpty()){
+            throw new RuntimeException("ID nao encontrado");
+        }
+        repository.deleteById(id);
     }
 }
