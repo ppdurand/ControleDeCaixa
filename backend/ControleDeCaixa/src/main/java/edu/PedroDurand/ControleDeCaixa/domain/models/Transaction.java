@@ -1,9 +1,6 @@
 package edu.PedroDurand.ControleDeCaixa.domain.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -16,6 +13,7 @@ public class Transaction {
     private LocalDate date;
     private String observation;
 
+    @Enumerated(EnumType.STRING)
     private TransactionType type;
 
     public Transaction() {
