@@ -3,6 +3,7 @@ package edu.PedroDurand.ControleDeCaixa.api.controllers;
 import edu.PedroDurand.ControleDeCaixa.application.dto.CreateTransaction;
 import edu.PedroDurand.ControleDeCaixa.application.services.TransactionService;
 import edu.PedroDurand.ControleDeCaixa.domain.models.Transaction;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class TransactionController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity addTransaction(@RequestBody CreateTransaction request){
+    public ResponseEntity addTransaction(@RequestBody @Valid CreateTransaction request){
         this.service.addTransaction(request);
         return ResponseEntity.ok("Movimentação efetivada");
     }
