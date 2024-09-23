@@ -17,8 +17,9 @@ public class TransactionController {
     }
 
     @PostMapping("/add")
-    public void addTransaction(@RequestBody CreateTransaction request){
+    public ResponseEntity addTransaction(@RequestBody CreateTransaction request){
         this.service.addTransaction(request);
+        return ResponseEntity.ok("Movimentação efetivada");
     }
 
     @GetMapping("/get")
