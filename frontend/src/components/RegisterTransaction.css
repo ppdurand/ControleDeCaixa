@@ -4,9 +4,9 @@
 }
 
 .registerComponent{
-    background-color: #eceef3;
+    background-color: #f3f3f3;
     font-family: "Poppins", sans-serif;
-    font-weight: 100;
+    font-weight: 300;
     font-style: normal;
     color: #010201;
     width: 458px;
@@ -53,6 +53,17 @@ input, button {
     display: block;
 }
 
+.campoMov {
+    margin-bottom: 1em;
+}
+
+/* Elementos de classe "campo" de tag <label> */
+.campoMov label {
+    margin-bottom: 0.1em;
+    color: #010201;
+    display: inline;
+}
+
 /* Elementos de classe "campo" ou "grupo" de tag <fieldset> */
 fieldset .campo {
     float: left;
@@ -64,7 +75,7 @@ fieldset .campo {
 input[type="number"],
 input[type="date"],
 input[typer="radio"] {
-    padding: 0.2em;
+    padding: 0.1em;
     border: 1px solid #59429d;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
     display: inline;
@@ -85,9 +96,9 @@ input[typer="radio"] {
     padding: 0.2em 0.6em;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 45%;
-    left: 35%;
+    position: relative;
+    top: 10px;
+    left: 350px;
     margin-right: -50%;
     transform: translate(-50%, -50%)
 }

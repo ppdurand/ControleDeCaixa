@@ -1,6 +1,13 @@
+import { useForm } from 'react-hook-form';
 import './RegisterTransaction.css';
 
 export const RegisterTransaction = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = (data: any) => {
+        console.log(data)
+    }
+
     return (
         <div className="registerComponent">
             <h2 id="título">Movimentação</h2>
@@ -8,31 +15,40 @@ export const RegisterTransaction = () => {
                 <fieldset>
                     <div className="campo">
                         <label htmlFor="value"><strong>Valor: </strong></label>
-                        <input type="number" name="value" id="value" required />
+                        <input className={errors?.value && "input-error"} type="number" id="value" required /* tratando erro */
+                            {...register("name", { required: true })} />
+                        {errors?.value?.type === "required" && <p className='error-message'>O valor é obrigatório</p>}
                     </div>
 
                     <div className="campo">
                         <label htmlFor="data"><strong>Data: </strong></label>
-                        <input type="date" name="date" id="date" required />
+                        <input className={errors?.date && "input-error"} type="date" id="date" required
+                            {...register("date", { required: true })} />
+                        {errors?.date?.type === "required" && <p className='error-message'>A data é obrigatória</p>}
                     </div>
+
                 </fieldset>
 
                 <div className="campo">
-                    <label htmlFor="observation"><strong>Observação: </strong></label>
-                    <input type="text" name="observation" id="observation" required />
+                    <label htmlFor="observation"><strong>Observação: </strong>(opcional)</label>
+                    <input className={errors?.observation && "input-error"} type="text" id="observation" required
+                        {...register("observation",  {maxLength: 250})} />
+                    {errors?.date?.type === "maxLength" && <p className='error-message'>Digite menos que 250 caracteres</p>}
                 </div>
 
-                <div className="campo">
+                <div className="campoMov">
                     <label><strong>Tipo de Movimentação: </strong></label>
                     <label>
-                        <input type="radio" name="movimentacao" value="RECEITA" checked />Receita
+                        <input type="radio" value="RECEITA" checked
+                            {...register("movimentacao")} />Receita
                     </label>
                     <label>
-                        <input type="radio" name="movimentacao" value="DESPESA" />Despesa
+                        <input type="radio" value="DESPESA"
+                            {...register("movimentacao")} />Despesa
                     </label>
                 </div>
             </form>
-            <button className="botao" type="submit">Movimentar</button>
+            <button className="botao" type="submit" onClick={() => handleSubmit(onSubmit)()}>Movimentar</button>
         </div>
     )
 }
