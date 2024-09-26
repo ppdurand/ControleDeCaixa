@@ -3,17 +3,16 @@ import React, { useEffect, useState, useMemo } from "react";
 import './TableTransaction.css';
 import { COLUMNS } from "./Columns";
 
-// Definindo a interface com as propriedades corretas
-interface Item {
+interface Transaction {
   id: number;
   value: number;
-  observation: string;  // Corrigido o typo de "obersevation" para "observation"
-  date: string;  // Supondo que a API retorna uma data como string
-  // Outras propriedades de acordo com o seu JSON
+  observation: string; 
+  date: string;  
+  type: string;
 }
 
 export const TableTransaction: React.FC = () => {
-  const [data, setData] = useState<Item[]>([]);
+  const [data, setData] = useState<Transaction[]>([]);
   const columns = useMemo(() => COLUMNS, []);
 
   useEffect(() => {
@@ -37,14 +36,16 @@ export const TableTransaction: React.FC = () => {
             <th>Valor</th>
             <th>Data</th>
             <th>Observação</th>
+            <th>Tipo</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
-            <tr key={item.id}>
-              <td>{item.value}</td>
-              <td>{item.date}</td>  {/* Supondo que a API retorne uma data */}
-              <td>{item.observation}</td>  {/* Corrigido o nome da propriedade */}
+          {data.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{transaction.value}</td>
+              <td>{transaction.date}</td> 
+              <td>{transaction.observation}</td> 
+              <td>{transaction.type}</td> 
             </tr>
           ))}
         </tbody>
