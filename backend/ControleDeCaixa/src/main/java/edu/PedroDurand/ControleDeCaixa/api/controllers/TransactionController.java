@@ -17,6 +17,7 @@ public class TransactionController {
         this.service = service;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/add")
     public ResponseEntity addTransaction(@RequestBody @Valid CreateTransaction request){
         this.service.addTransaction(request);
