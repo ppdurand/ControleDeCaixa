@@ -11,8 +11,7 @@ export const RegisterTransaction = () => {
                 ...data,
                 value: parseFloat(data.value), 
             };
-            console.log(data)
-            console.log(payload);
+    
             const response = await fetch('http://localhost:8080/add', {
                 method: 'POST',
                 headers: {
@@ -21,7 +20,6 @@ export const RegisterTransaction = () => {
                 body: JSON.stringify(payload)
             });
         
-
             if (response.ok) {
                 console.log('Dados enviados com sucesso!');
             } else {

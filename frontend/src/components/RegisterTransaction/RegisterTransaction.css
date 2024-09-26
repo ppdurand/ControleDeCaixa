@@ -3,16 +3,17 @@
     padding: 0;
 }
 
-.registerComponent{
+.registerComponent {
     background-color: #f3f3f3;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-style: normal;
     color: #010201;
+    position: absolute;
     width: 458px;
-    height: 250px;
-    margin-top: 20px;
-    margin-left: 125px;
+    height: 362px;
+    left: 125px;
+    top: 159px;
     gap: 0px;
     opacity: 0px;
     justify-content: center;
@@ -24,7 +25,11 @@
     font-weight: 100;
     font-style: normal;
     color: #380B61;
-    margin-left: 100px;
+    position: relative;
+    width: 190px;
+    height: 34px;
+    left: 160px;
+    top: 189px;
 }
 
 /* Elementos de tag <fieldset>*/
@@ -34,7 +39,8 @@ fieldset {
 
 
 /* Elementos de tags <body>, <input>, <Select>, <textarea> e <button> */
-input, button {
+input,
+button {
     font-family: sans-serif;
     font-size: 1em;
     color: #010201;

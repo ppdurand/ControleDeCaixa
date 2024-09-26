@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class TransactionController {
     private final TransactionService service;
@@ -17,7 +17,6 @@ public class TransactionController {
         this.service = service;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/add")
     public ResponseEntity addTransaction(@RequestBody @Valid CreateTransaction request){
         this.service.addTransaction(request);

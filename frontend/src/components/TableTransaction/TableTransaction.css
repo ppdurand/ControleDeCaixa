@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#table {
+    background-color: #f3f3f3;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #010201;
+    position: absolute;
+    width: 1116px;
+    height: 159px;
+    left: 125px;
+    top: 546px;
+    gap: 0px;
+    opacity: 0px;
+    justify-content: center;
+    border-radius: 15px;
+}

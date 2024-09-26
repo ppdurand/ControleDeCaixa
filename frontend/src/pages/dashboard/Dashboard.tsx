@@ -1,4 +1,5 @@
-import { RegisterTransaction } from "../../components/RegisterTransaction";
+import { RegisterTransaction } from "../../components/RegisterTransaction/RegisterTransaction";
+import { TableTransaction } from "../../components/TableTransaction/TableTransaction";
 
 export const Dashboard = () => {
 
@@ -6,6 +7,7 @@ export const Dashboard = () => {
         <div>
             <h1>Controle de Caixa</h1>
             <RegisterTransaction />
+            <TableTransaction />
         </div>
     ); 
 }
