@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import './TableTransaction.css';
 import { COLUMNS } from "./Columns";
 import { Table } from "@radix-ui/themes";
+import { useForm } from "react-hook-form";
 
 interface Transaction {
   id: number;
@@ -14,6 +15,7 @@ interface Transaction {
 
 export const TableTransaction: React.FC = () => {
   const [data, setData] = useState<Transaction[]>([]);
+  const { handleSubmit} = useForm();
 
   useEffect(() => {
     axios.get('http://localhost:8080/get')
@@ -26,7 +28,20 @@ export const TableTransaction: React.FC = () => {
       });
   }, []);
 
-
+  const onSubmit = async (id: number) => {
+    try {
+      const response = await axios.delete(`http://localhost:8080/delete/${id}`);
+  
+      if (response.status == 200) {
+          console.log('Dados enviados com sucesso!');
+          setData((prevData) => prevData.filter(transaction => transaction.id !== id));
+      } else {
+          console.error('Erro ao enviar os dados:', response.statusText);
+      }
+    } catch (error) {
+        console.error('Erro ao enviar a requisição:', error);
+    }
+  }
 
   return (
     <div>
@@ -49,6 +64,9 @@ export const TableTransaction: React.FC = () => {
                 <Table.RowHeaderCell>{transaction.date}</Table.RowHeaderCell>
                 <Table.RowHeaderCell>{transaction.observation}</Table.RowHeaderCell>
                 <Table.RowHeaderCell>{transaction.type}</Table.RowHeaderCell>
+                <Table.RowHeaderCell>
+                  <button className="botao" type="submit" onClick={() => handleSubmit(() => onSubmit(transaction.id))()}>Deletar</button>
+                </Table.RowHeaderCell>
               </Table.Row>
             ))
           ) : (
