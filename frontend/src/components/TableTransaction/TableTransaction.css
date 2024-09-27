@@ -3,8 +3,26 @@
     padding: 0;
 }
 
-#table {
-    background-color: #f3f3f3;
+#valueCol {
+    position: relative;
+    width: 38px;
+    height: 21px;
+    margin-left: 163px;
+    margin-top: 565px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.01em;
+
+    color: #000000;
+}
+
+.table {
+    background-color: #ffffff;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-style: normal;

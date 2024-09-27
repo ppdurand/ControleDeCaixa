@@ -6,8 +6,8 @@ import { COLUMNS } from "./Columns";
 interface Transaction {
   id: number;
   value: number;
-  observation: string; 
-  date: string;  
+  observation: string;
+  date: string;
   type: string;
 }
 
@@ -29,23 +29,23 @@ export const TableTransaction: React.FC = () => {
 
 
   return (
-    <div id="table">
+    <div className="table">
       <table>
         <thead>
           <tr>
-            <th>Valor</th>
-            <th>Data</th>
-            <th>Observação</th>
-            <th>Tipo</th>
+            <th id="valueCol">Valor</th>
+            <th id="dateCol">Data</th>
+            <th id="observationCol">Observação</th>
+            <th id="typeCol">Tipo</th>
           </tr>
         </thead>
         <tbody>
           {data.map((transaction) => (
             <tr key={transaction.id}>
               <td>{transaction.value}</td>
-              <td>{transaction.date}</td> 
-              <td>{transaction.observation}</td> 
-              <td>{transaction.type}</td> 
+              <td>{transaction.date}</td>
+              <td>{transaction.observation}</td>
+              <td>{transaction.type}</td>
             </tr>
           ))}
         </tbody>

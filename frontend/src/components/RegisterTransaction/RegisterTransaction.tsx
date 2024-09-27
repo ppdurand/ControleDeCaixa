@@ -32,19 +32,19 @@ export const RegisterTransaction = () => {
 
     return (
         <div className="registerComponent">
-            <h2 id="título">Movimentação</h2>
+            <h2 className="título">Movimentações</h2>
             <form>
                 <fieldset>
                     <div className="campo">
                         <label htmlFor="value"><strong>Valor: </strong></label>
-                        <input className={errors?.value && "input-error"} type="number" id="value" /* tratando erro */
+                        <input placeholder="Digite o valor" className={errors?.value && "input-error"} type="number" id="value" /* tratando erro */
                             {...register("value", { required: true })} />
                         {errors?.value?.type === "required" && <p className='error-message'>O valor é obrigatório</p>}
                     </div>
 
                     <div className="campo">
                         <label htmlFor="date"><strong>Data: </strong></label>
-                        <input className={errors?.date && "input-error"} type="date" id="date" required
+                        <input placeholder="Selecione a data" className={errors?.date && "input-error"} type="date" id="date" required
                             {...register("date", { required: true })} />
                         {errors?.date?.type === "required" && <p className='error-message'>A data é obrigatória</p>}
                     </div>
@@ -53,7 +53,7 @@ export const RegisterTransaction = () => {
 
                 <div className="campo">
                     <label htmlFor="observation"><strong>Observação: </strong>(opcional)</label>
-                    <input className={errors?.observation && "input-error"} type="text" id="observation" required
+                    <input placeholder="Digite a observação" className={errors?.observation && "input-error"} type="text" id="observation" required
                         {...register("observation",  {maxLength: 250})} />
                     {errors?.observation?.type === "maxLength" && <p className='error-message'>Digite menos que 250 caracteres</p>}
                 </div>

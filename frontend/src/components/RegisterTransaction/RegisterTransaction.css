@@ -3,8 +3,20 @@
     padding: 0;
 }
 
+.titulo {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    color: #0a0113;
+    position: relative;
+    width: 190px;
+    height: 34px;
+    left: 160px;
+    top: 189px;
+}
+
 .registerComponent {
-    background-color: #f3f3f3;
+    background-color: #ffffff;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -20,25 +32,11 @@
     border-radius: 15px;
 }
 
-#titulo {
-    font-family: "Poppins", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-    color: #380B61;
-    position: relative;
-    width: 190px;
-    height: 34px;
-    left: 160px;
-    top: 189px;
-}
 
-/* Elementos de tag <fieldset>*/
 fieldset {
     border: 0;
 }
 
-
-/* Elementos de tags <body>, <input>, <Select>, <textarea> e <button> */
 input,
 button {
     font-family: sans-serif;
@@ -95,7 +93,7 @@ input[typer="radio"] {
 /* Elemento de classe "botao" */
 .botao {
     font-size: 1.2em;
-    background: #469999;
+    background: #0881A3;
     border: 0;
     margin-bottom: 1em;
     color: #ffffff;
