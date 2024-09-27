@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState, useMemo } from "react";
 import './TableTransaction.css';
 import { COLUMNS } from "./Columns";
+import { Table } from "@radix-ui/themes";
 
 interface Transaction {
   id: number;
@@ -13,7 +14,6 @@ interface Transaction {
 
 export const TableTransaction: React.FC = () => {
   const [data, setData] = useState<Transaction[]>([]);
-  const columns = useMemo(() => COLUMNS, []);
 
   useEffect(() => {
     axios.get('http://localhost:8080/get')
@@ -29,27 +29,35 @@ export const TableTransaction: React.FC = () => {
 
 
   return (
-    <div className="table">
-      <table>
-        <thead>
-          <tr>
-            <th id="valueCol">Valor</th>
-            <th id="dateCol">Data</th>
-            <th id="observationCol">Observação</th>
-            <th id="typeCol">Tipo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((transaction) => (
-            <tr key={transaction.id}>
-              <td>{transaction.value}</td>
-              <td>{transaction.date}</td>
-              <td>{transaction.observation}</td>
-              <td>{transaction.type}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div>
+      <Table.Root className="table">
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeaderCell id="valueCol">Valor</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell id="dateCol">Data</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell id="observationCol">Observação</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell id="typeCol">Tipo de movimentação</Table.ColumnHeaderCell>
+          </Table.Row>
+        </Table.Header>
+      </Table.Root>
+
+      <Table.Body className="response">
+      {data.length > 0 ? (
+            data.map((transaction) => (
+              <Table.Row key={transaction.id}>
+                <Table.RowHeaderCell>{transaction.value}</Table.RowHeaderCell>
+                <Table.RowHeaderCell>{transaction.date}</Table.RowHeaderCell>
+                <Table.RowHeaderCell>{transaction.observation}</Table.RowHeaderCell>
+                <Table.RowHeaderCell>{transaction.type}</Table.RowHeaderCell>
+              </Table.Row>
+            ))
+          ) : (
+            <Table.Row>
+              <Table.RowHeaderCell colSpan={4}>Nenhuma transação encontrada</Table.RowHeaderCell>
+            </Table.Row>
+          )}
+    
+      </Table.Body>
     </div>
   );
 };

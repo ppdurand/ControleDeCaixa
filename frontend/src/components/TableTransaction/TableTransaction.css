@@ -1,15 +1,9 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-#valueCol {
-    position: relative;
-    width: 38px;
-    height: 21px;
-    margin-left: 163px;
-    margin-top: 565px;
-
+  }
+  
+  #valueCol, #dateCol, #observationCol, #typeCol {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
@@ -17,23 +11,48 @@
     line-height: 21px;
     text-align: center;
     letter-spacing: 0.01em;
-
     color: #000000;
-}
-
-.table {
+  }
+  
+  #typeCol {
+    font-weight: 600;
+  }
+  
+  .table {
+    width: 100%; /* Faz a tabela ocupar toda a largura disponível */
+    border-spacing: 0; /* Remove o espaçamento padrão entre células */
     background-color: #ffffff;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-style: normal;
     color: #010201;
     position: absolute;
-    width: 1116px;
-    height: 159px;
     left: 125px;
     top: 546px;
-    gap: 0px;
-    opacity: 0px;
     justify-content: center;
     border-radius: 15px;
-}
+  }
+  
+  .table th, .table td {
+    padding: 0 20px; /* Adiciona espaço interno (esquerda/direita) nas colunas */
+    text-align: center; /* Centraliza o conteúdo dentro das células */
+  }
+  
+  .table th {
+    font-weight: 600; /* Deixa o cabeçalho mais destacado */
+  }
+  
+  .response {
+    background-color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #010201;
+    position: absolute;
+    width: 100%;
+    left: 140px;
+    top: 570px;
+    justify-content: center;
+    border-radius: 15px;
+  }
+  
