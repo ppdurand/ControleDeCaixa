@@ -26,7 +26,7 @@ export const TableTransaction: React.FC = () => {
       .catch(error => {
         console.error('Erro ao buscar os dados:', error);
       });
-  }, []);
+  });
 
   const onSubmit = async (id: number) => {
     try {
