@@ -28,6 +28,11 @@ public class TransactionController {
         return ResponseEntity.ok(this.service.getAllTransaction());
     }
 
+    @GetMapping("/getSum")
+    public ResponseEntity<List<Double>> getSum(){
+        return ResponseEntity.ok(this.service.getSumOfTransactions());
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable("id") Long id){
         this.service.deleteTransaction(id);

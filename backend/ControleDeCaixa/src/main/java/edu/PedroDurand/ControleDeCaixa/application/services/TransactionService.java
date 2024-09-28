@@ -9,4 +9,6 @@ public interface TransactionService {
     void addTransaction(CreateTransaction request);
     List<Transaction> getAllTransaction();
     void deleteTransaction(Long id);
+
+    List<Double> getSumOfTransactions();
 }
