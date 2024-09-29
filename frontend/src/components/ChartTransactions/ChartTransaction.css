@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.chart {
+    position: absolute;
+    width: 583px;
+    height: 362px;
+    left: 658px;
+    top: 159px;
+}
