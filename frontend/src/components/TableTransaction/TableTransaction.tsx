@@ -76,14 +76,6 @@ export const TableTransaction = () => {
         )}
 
       </Table.Body>
-
-
-      <ul>
-        {data.map((transaction => (
-          <li key={transaction.id}>{transaction.value}</li>
-        )
-        ))}
-      </ul>
     </div>
   );
 };
