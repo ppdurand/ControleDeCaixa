@@ -5,12 +5,12 @@ import './ChartTransaction.css';
 
 
 export const ChartTransaction = () => {
-    const [receita, setReceita] = useState<number | null>(null);
-    const [despesa, setDespesa] = useState<number | null>(null);
+    const [receita, setReceita] = useState<number>();
+    const [despesa, setDespesa] = useState<number>();
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`https://localhost:8080/getSum`); // Insira seu endpoint aqui
+            const response = await axios.get(`http://localhost:8080/getSum`); 
             const result = response.data;
             setReceita(result[0]);
             console.log(receita)
@@ -24,10 +24,6 @@ export const ChartTransaction = () => {
 
     useEffect(() => { fetchData(); }, []);
 
-    const dataTest = [
-        ["", "Receita", "Despesa"],
-        [" ", 90, 50],
-    ]
     const dataChart = [
         ["", "Receita", "Despesa"],
         [" ", receita, despesa],
@@ -39,7 +35,7 @@ export const ChartTransaction = () => {
                 chartType="Bar"
                 width="100%"
                 height="400px"
-                data={dataTest}
+                data={dataChart}
                 options={{
                     title: 'Receita e Despesa',
                     hAxis: { title: 'Categoria' },
