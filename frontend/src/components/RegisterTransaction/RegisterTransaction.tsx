@@ -25,6 +25,7 @@ export const RegisterTransaction = () => {
             } else {
                 console.error('Erro ao enviar os dados:', response.statusText);
             }
+            window.location.reload();
         } catch (error) {
             console.error('Erro ao enviar a requisição:', error);
         }

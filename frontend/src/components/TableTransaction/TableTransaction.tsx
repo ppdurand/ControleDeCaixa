@@ -13,38 +13,38 @@ interface Transaction {
   type: string;
 }
 
-export const TableTransaction: React.FC = () => {
+export const TableTransaction = () => {
   const [data, setData] = useState<Transaction[]>([]);
-  const { handleSubmit} = useForm();
+  const { handleSubmit } = useForm();
 
   useEffect(() => {
     axios.get('http://localhost:8080/get')
       .then(response => {
-        console.log("Dados recebidos: ", response.data);
         setData(response.data);
       })
       .catch(error => {
         console.error('Erro ao buscar os dados:', error);
       });
-  });
+  }, []);
 
   const onSubmit = async (id: number) => {
     try {
       const response = await axios.delete(`http://localhost:8080/delete/${id}`);
-  
+
       if (response.status == 200) {
-          console.log('Dados enviados com sucesso!');
-          setData((prevData) => prevData.filter(transaction => transaction.id !== id));
+        console.log('Dados enviados com sucesso!');
+        setData((prevData) => prevData.filter(transaction => transaction.id !== id));
       } else {
-          console.error('Erro ao enviar os dados:', response.statusText);
+        console.error('Erro ao enviar os dados:', response.statusText);
       }
     } catch (error) {
-        console.error('Erro ao enviar a requisição:', error);
+      console.error('Erro ao enviar a requisição:', error);
     }
   }
 
   return (
     <div>
+
       <Table.Root className="table">
         <Table.Header>
           <Table.Row>
@@ -57,25 +57,33 @@ export const TableTransaction: React.FC = () => {
       </Table.Root>
 
       <Table.Body className="response">
-      {data.length > 0 ? (
-            data.map((transaction) => (
-              <Table.Row key={transaction.id}>
-                <Table.RowHeaderCell>{transaction.value}</Table.RowHeaderCell>
-                <Table.RowHeaderCell>{transaction.date}</Table.RowHeaderCell>
-                <Table.RowHeaderCell>{transaction.observation}</Table.RowHeaderCell>
-                <Table.RowHeaderCell>{transaction.type}</Table.RowHeaderCell>
-                <Table.RowHeaderCell>
-                  <button className="botao" type="submit" onClick={() => handleSubmit(() => onSubmit(transaction.id))()}>Deletar</button>
-                </Table.RowHeaderCell>
-              </Table.Row>
-            ))
-          ) : (
-            <Table.Row>
-              <Table.RowHeaderCell colSpan={4}>Nenhuma transação encontrada</Table.RowHeaderCell>
+        {data.length > 0 ? (
+          data.map((transaction) => (
+            <Table.Row key={transaction.id}>
+              <Table.RowHeaderCell>{transaction.value}</Table.RowHeaderCell>
+              <Table.RowHeaderCell>{transaction.date}</Table.RowHeaderCell>
+              <Table.RowHeaderCell>{transaction.observation}</Table.RowHeaderCell>
+              <Table.RowHeaderCell>{transaction.type}</Table.RowHeaderCell>
+              <Table.RowHeaderCell>
+                <button className="botao" type="submit" onClick={() => handleSubmit(() => onSubmit(transaction.id))()}>Deletar</button>
+              </Table.RowHeaderCell>
             </Table.Row>
-          )}
-    
+          ))
+        ) : (
+          <Table.Row>
+            <Table.RowHeaderCell colSpan={4}>Nenhuma transação encontrada</Table.RowHeaderCell>
+          </Table.Row>
+        )}
+
       </Table.Body>
+
+
+      <ul>
+        {data.map((transaction => (
+          <li key={transaction.id}>{transaction.value}</li>
+        )
+        ))}
+      </ul>
     </div>
   );
 };
