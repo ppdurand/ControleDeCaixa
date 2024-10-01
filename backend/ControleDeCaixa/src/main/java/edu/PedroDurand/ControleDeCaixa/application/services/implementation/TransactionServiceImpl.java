@@ -10,6 +10,7 @@ import edu.PedroDurand.ControleDeCaixa.infra.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,6 +36,8 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public List<Transaction> getAllTransaction() {
+        List<Transaction> transactions = repository.findAll();
+        transactions.sort(Comparator.comparing(Transaction::getId).reversed());
         return this.repository.findAll();
     }
 
