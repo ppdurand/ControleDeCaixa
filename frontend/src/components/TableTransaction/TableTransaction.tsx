@@ -13,9 +13,10 @@ interface Transaction {
   type: string;
 }
 
-export const TableTransaction = () => {
+export const TableTransaction = (props: { refreshData: boolean }) => {
   const [data, setData] = useState<Transaction[]>([]);
   const { handleSubmit } = useForm();
+
 
   useEffect(() => {
     axios.get('http://localhost:8080/get')
@@ -25,7 +26,7 @@ export const TableTransaction = () => {
       .catch(error => {
         console.error('Erro ao buscar os dados:', error);
       });
-  }, []);
+  }, [props.refreshData]);
 
   const onSubmit = async (id: number) => {
     try {

@@ -1,9 +1,12 @@
 import { useForm } from 'react-hook-form';
 import './RegisterTransaction.css';
 import { log } from 'console';
+import { TableTransaction } from '../TableTransaction/TableTransaction';
+import { useState } from 'react';
 
 export const RegisterTransaction = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const[refreshData, setRefreshData] = useState(true);
 
     const onSubmit = async (data: any) => {
         try {
@@ -22,10 +25,10 @@ export const RegisterTransaction = () => {
         
             if (response.ok) {
                 console.log('Dados enviados com sucesso!');
+                setRefreshData(bool => !bool);
             } else {
                 console.error('Erro ao enviar os dados:', response.statusText);
             }
-            window.location.reload();
         } catch (error) {
             console.error('Erro ao enviar a requisição:', error);
         }
@@ -71,7 +74,8 @@ export const RegisterTransaction = () => {
                     </label>
                 </div>
             </form>
-            <button className="botao" type="submit" onClick={() => handleSubmit(onSubmit)()}>Movimentar</button>
+            <button className="botao" type="button" onClick={() => handleSubmit(onSubmit)()}>Movimentar</button>
+            <TableTransaction refreshData={refreshData}/>
         </div>
     )
 }

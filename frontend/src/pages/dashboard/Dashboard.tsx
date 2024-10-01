@@ -9,7 +9,6 @@ export const Dashboard = () => {
         <div>
             <Title />
             <RegisterTransaction />
-            <TableTransaction />
             <ChartTransaction />
         </div>
     ); 
