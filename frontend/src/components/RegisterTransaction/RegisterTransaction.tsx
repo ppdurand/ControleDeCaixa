@@ -1,34 +1,15 @@
 import { useForm } from 'react-hook-form';
 import './RegisterTransaction.css';
-import { log } from 'console';
 import { TableTransaction } from '../TableTransaction/TableTransaction';
 import { useState } from 'react';
 
-export const RegisterTransaction = () => {
+export const RegisterTransaction = (props: {addTransaction: any}) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const[refreshData, setRefreshData] = useState(true);
 
     const onSubmit = async (data: any) => {
         try {
-            const payload = {
-                ...data,
-                value: parseFloat(data.value), 
-            };
-    
-            const response = await fetch('http://localhost:8080/add', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
-            });
-        
-            if (response.ok) {
-                console.log('Dados enviados com sucesso!');
-                setRefreshData(bool => !bool);
-            } else {
-                console.error('Erro ao enviar os dados:', response.statusText);
-            }
+            props.addTransaction(data);
         } catch (error) {
             console.error('Erro ao enviar a requisição:', error);
         }
@@ -75,7 +56,6 @@ export const RegisterTransaction = () => {
                 </div>
             </form>
             <button className="botao" type="button" onClick={() => handleSubmit(onSubmit)()}>Movimentar</button>
-            <TableTransaction refreshData={refreshData}/>
         </div>
     )
 }

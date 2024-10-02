@@ -4,29 +4,13 @@ import Chart from "react-google-charts";
 import './ChartTransaction.css';
 
 
-export const ChartTransaction = () => {
-    const [receita, setReceita] = useState<number>();
-    const [despesa, setDespesa] = useState<number>();
+export const ChartTransaction = (props: {receita: number, despesa: number}) => {
 
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(`http://localhost:8080/getSum`); 
-            const result = response.data;
-            setReceita(result[0]);
-            console.log(receita)
-            setDespesa(result[1]);
-            console.log(despesa)
 
-        } catch (error) {
-            console.error('Erro ao buscar dados:', error);
-        }
-    };
-
-    useEffect(() => { fetchData(); }, []);
 
     const dataChart = [
         ["", "Receita", "Despesa"],
-        [" ", receita, despesa],
+        [" ", props.receita, props.despesa],
     ];
 
     return (

@@ -1,7 +1,0 @@
-CREATE TABLE IF NOT EXISTS transaction (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    value DOUBLE NOT NULL,
-    date DATE NOT NULL,
-    observation VARCHAR(250),
-    type VARCHAR(10) NOT NULL
-);

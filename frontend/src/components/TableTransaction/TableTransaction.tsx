@@ -4,6 +4,7 @@ import './TableTransaction.css';
 import { COLUMNS } from "./Columns";
 import { Table } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
+import { table } from "console";
 
 interface Transaction {
   id: number;
@@ -13,31 +14,14 @@ interface Transaction {
   type: string;
 }
 
-export const TableTransaction = (props: { refreshData: boolean }) => {
+export const TableTransaction = (props: { table: Transaction[] , deleteTransaction: any}) => {
   const [data, setData] = useState<Transaction[]>([]);
   const { handleSubmit } = useForm();
 
 
-  useEffect(() => {
-    axios.get('http://localhost:8080/get')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('Erro ao buscar os dados:', error);
-      });
-  }, [props.refreshData]);
-
   const onSubmit = async (id: number) => {
     try {
-      const response = await axios.delete(`http://localhost:8080/delete/${id}`);
-
-      if (response.status == 200) {
-        console.log('Dados enviados com sucesso!');
-        setData((prevData) => prevData.filter(transaction => transaction.id !== id));
-      } else {
-        console.error('Erro ao enviar os dados:', response.statusText);
-      }
+      props.deleteTransaction(id);
     } catch (error) {
       console.error('Erro ao enviar a requisição:', error);
     }
@@ -58,8 +42,8 @@ export const TableTransaction = (props: { refreshData: boolean }) => {
       </Table.Root>
 
       <Table.Body className="response">
-        {data.length > 0 ? (
-          data.map((transaction) => (
+        {props.table.length > 0 ? (
+          props.table.map((transaction) => (
             <Table.Row key={transaction.id}>
               <Table.RowHeaderCell>{transaction.value}</Table.RowHeaderCell>
               <Table.RowHeaderCell>{transaction.date}</Table.RowHeaderCell>
