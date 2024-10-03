@@ -1,58 +1,121 @@
 * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  #valueCol, #dateCol, #observationCol, #typeCol {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    letter-spacing: 0.01em;
-    color: #000000;
-  }
-  
-  #typeCol {
-    font-weight: 600;
-  }
-  
-  .table {
-    width: 100%; /* Faz a tabela ocupar toda a largura disponível */
-    border-spacing: 0; /* Remove o espaçamento padrão entre células */
-    background-color: #ffffff;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    color: #010201;
-    position: absolute;
-    left: 125px;
-    top: 546px;
-    justify-content: center;
-    border-radius: 15px;
-  }
-  
-  .table th, .table td {
-    padding: 0 20px; /* Adiciona espaço interno (esquerda/direita) nas colunas */
-    text-align: center; /* Centraliza o conteúdo dentro das células */
-  }
-  
-  .table th {
-    font-weight: 600; /* Deixa o cabeçalho mais destacado */
-  }
-  
-  .response {
-    background-color: #ffffff;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    color: #010201;
-    position: absolute;
-    width: 100%;
-    left: 140px;
-    top: 570px;
-    justify-content: center;
-    border-radius: 15px;
-  }
-  
+  margin: 0;
+  padding: 0;
+}
+
+#tableComponent {
+  background-color: #ffffff;
+  position: absolute;
+  width: 1116px;
+  height: 159px;
+  top: 546px;
+  left: 125px;
+  gap: 0px;
+  opacity: 0px;
+  margin: 1em;
+  border-radius: 15px;
+}
+
+#valueCol,
+#dateCol,
+#observationCol,
+#typeCol {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 21px;
+  letter-spacing: 0.01em;
+  color: #000000;
+  padding: 5px;
+  text-align: left;
+}
+#valueRes,
+#dateRes,
+#obsRes,
+#typeRes {
+  padding: 10px;
+  text-align: left;
+}
+
+#valueCol {
+  left: 38px;
+  position: relative;
+}
+
+#valueRes{
+  left: 38px;
+  position: relative;
+}
+
+#dateCol {
+  left: 155px;
+  position: absolute;
+}
+
+#dateRes{
+  left: 155px;
+  position: absolute;
+}
+
+#observationCol {
+  left: 292px;
+  position: absolute;
+  text-align: left;
+}
+
+#obsRes {
+  left: 292px;
+  position: absolute;
+  max-width: 450px;
+  overflow-x: auto;
+}
+
+#typeCol {
+  left: 774px;
+  position: absolute;
+}
+
+#typeRes {
+  left: 774px;
+  position: absolute;
+  text-align: left;
+}
+
+.table {
+  width: 1116px;
+  border-spacing: 0;
+  background-color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #010201;
+  left: 125px;
+  top: 546px;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.response {
+  background-color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #010201;
+  width: 1116px;
+  left: 125px;
+  top: 570px;
+  border-radius: 15px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+
+.actionDel {
+  top: 50;
+  left: 1000px;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

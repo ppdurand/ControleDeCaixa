@@ -3,10 +3,26 @@
     padding: 0;
 }
 
-.chart {
+.chartComponent {
+    background-color: #ffffff;
     position: absolute;
+    border-radius: 15px;
     width: 583px;
     height: 362px;
     left: 658px;
     top: 159px;
+    padding: 1em;
+}
+
+.título{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 25px;
+    color: #000000;
+    position: relative;
+    width: 238px;
+    height: 34px;
+    text-align: center;
+    display: inline;
 }

@@ -1,10 +1,6 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
 import './TableTransaction.css';
-import { COLUMNS } from "./Columns";
 import { Table } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
-import { table } from "console";
 
 interface Transaction {
   id: number;
@@ -15,7 +11,6 @@ interface Transaction {
 }
 
 export const TableTransaction = (props: { table: Transaction[] , deleteTransaction: any}) => {
-  const [data, setData] = useState<Transaction[]>([]);
   const { handleSubmit } = useForm();
 
 
@@ -28,7 +23,7 @@ export const TableTransaction = (props: { table: Transaction[] , deleteTransacti
   }
 
   return (
-    <div>
+    <div id="tableComponent">
 
       <Table.Root className="table">
         <Table.Header>
@@ -45,12 +40,14 @@ export const TableTransaction = (props: { table: Transaction[] , deleteTransacti
         {props.table.length > 0 ? (
           props.table.map((transaction) => (
             <Table.Row key={transaction.id}>
-              <Table.RowHeaderCell>{transaction.value}</Table.RowHeaderCell>
-              <Table.RowHeaderCell>{transaction.date}</Table.RowHeaderCell>
-              <Table.RowHeaderCell>{transaction.observation}</Table.RowHeaderCell>
-              <Table.RowHeaderCell>{transaction.type}</Table.RowHeaderCell>
+              <Table.RowHeaderCell id="valueRes">{transaction.value}</Table.RowHeaderCell>
+              <Table.RowHeaderCell id="dateRes">{transaction.date}</Table.RowHeaderCell>
+              <Table.RowHeaderCell id="obsRes">{transaction.observation}</Table.RowHeaderCell>
+              <Table.RowHeaderCell id="typeRes">{transaction.type}</Table.RowHeaderCell>
               <Table.RowHeaderCell>
-                <button className="botao" type="submit" onClick={() => handleSubmit(() => onSubmit(transaction.id))()}>Deletar</button>
+                <button className="actionDel" type="submit" onClick={() => handleSubmit(() => onSubmit(transaction.id))()}>
+                  <img src="/trash.png" alt="Deletar" style={{ width: '20px', height: '20px' }} />
+                </button>
               </Table.RowHeaderCell>
             </Table.Row>
           ))

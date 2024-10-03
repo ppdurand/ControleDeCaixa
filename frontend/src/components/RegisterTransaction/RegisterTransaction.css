@@ -14,7 +14,7 @@
     text-align: center;
 }
 
-#formulario{
+#formulario {
     margin-top: 1em;
 }
 
@@ -26,9 +26,11 @@
     color: #010201;
     position: absolute;
     width: 458px;
-    height: 362px;
+    height: 355px; /* no figma é 362 */
+    top: 159px;
     left: 125px;
-    top: 140px;
+    gap: 0px;
+    opacity: 0px;
     margin-bottom: 25px;
     justify-content: center;
     border-radius: 15px;
@@ -48,7 +50,7 @@ input {
     border-radius: 5px;
 }
 
-.campo{
+.campo {
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -70,7 +72,7 @@ input {
     display: inline;
 }
 
-.campoMov label input{
+.campoMov label input {
     margin: 5px;
     padding: 5px;
 }
