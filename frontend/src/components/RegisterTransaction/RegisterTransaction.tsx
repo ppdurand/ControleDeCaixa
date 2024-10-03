@@ -1,11 +1,8 @@
 import { useForm } from 'react-hook-form';
 import './RegisterTransaction.css';
-import { TableTransaction } from '../TableTransaction/TableTransaction';
-import { useState } from 'react';
 
 export const RegisterTransaction = (props: {addTransaction: any}) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const[refreshData, setRefreshData] = useState(true);
 
     const onSubmit = async (data: any) => {
         try {
@@ -17,8 +14,8 @@ export const RegisterTransaction = (props: {addTransaction: any}) => {
 
     return (
         <div className="registerComponent">
-            <h2 className="título">Movimentações</h2>
-            <form>
+            <h2 id="título">Movimentações</h2>
+            <form id="formulario">
                 <fieldset>
                     <div className="campo">
                         <label htmlFor="value"><strong>Valor: </strong></label>
@@ -37,7 +34,7 @@ export const RegisterTransaction = (props: {addTransaction: any}) => {
                 </fieldset>
 
                 <div className="campo">
-                    <label htmlFor="observation"><strong>Observação: </strong>(opcional)</label>
+                    <label htmlFor="observation"><strong>Observação: </strong> (opcional)</label>
                     <input placeholder="Digite a observação" className={errors?.observation && "input-error"} type="text" id="observation" required
                         {...register("observation",  {maxLength: 250})} />
                     {errors?.observation?.type === "maxLength" && <p className='error-message'>Digite menos que 250 caracteres</p>}
@@ -46,7 +43,7 @@ export const RegisterTransaction = (props: {addTransaction: any}) => {
                 <div className="campoMov">
                     <label><strong>Tipo de Movimentação: </strong></label>
                     <label>
-                        <input type="radio" value="RECEITA" checked
+                        <input type="radio" value="RECEITA" defaultChecked
                             {...register("type")} />Receita
                     </label>
                     <label>
@@ -55,7 +52,7 @@ export const RegisterTransaction = (props: {addTransaction: any}) => {
                     </label>
                 </div>
             </form>
-            <button className="botao" type="button" onClick={() => handleSubmit(onSubmit)()}>Movimentar</button>
+            <button className="botao" type="button" onClick={() => handleSubmit(onSubmit)()}>+ Adicionar</button>
         </div>
     )
 }

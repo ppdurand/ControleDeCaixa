@@ -3,16 +3,19 @@
     padding: 0;
 }
 
-.titulo {
+#título {
     font-family: "Poppins", sans-serif;
-    font-weight: 100;
+    font-weight: 700;
     font-style: normal;
-    color: #0a0113;
+    color: #000000;
     position: relative;
     width: 190px;
     height: 34px;
-    left: 160px;
-    top: 189px;
+    text-align: center;
+}
+
+#formulario{
+    margin-top: 1em;
 }
 
 .registerComponent {
@@ -25,11 +28,11 @@
     width: 458px;
     height: 362px;
     left: 125px;
-    top: 159px;
-    gap: 0px;
-    opacity: 0px;
+    top: 140px;
+    margin-bottom: 25px;
     justify-content: center;
     border-radius: 15px;
+    padding: 20px;
 }
 
 
@@ -37,20 +40,19 @@ fieldset {
     border: 0;
 }
 
-input,
-button {
-    font-family: sans-serif;
+input {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
     font-size: 1em;
     color: #010201;
     border-radius: 5px;
 }
 
-/* Elementos de classe "campo" */
-.campo {
+.campo{
+    margin-top: 1em;
     margin-bottom: 1em;
 }
 
-/* Elementos de classe "campo" de tag <label> */
 .campo label {
     margin-bottom: 0.2em;
     color: #010201;
@@ -58,23 +60,26 @@ button {
 }
 
 .campoMov {
+    margin-top: 1em;
     margin-bottom: 1em;
 }
 
-/* Elementos de classe "campo" de tag <label> */
 .campoMov label {
     margin-bottom: 0.1em;
     color: #010201;
     display: inline;
 }
 
-/* Elementos de classe "campo" ou "grupo" de tag <fieldset> */
+.campoMov label input{
+    margin: 5px;
+    padding: 5px;
+}
+
 fieldset .campo {
     float: left;
     margin-right: 1em;
 }
 
-/* Elementos de classe "campo" das tags <input> com atributo text e email, da tag <select> e da tag <textarea>*/
 .campo input[type="text"],
 input[type="number"],
 input[type="date"],
@@ -85,16 +90,15 @@ input[typer="radio"] {
     display: inline;
 }
 
-/* Elemento de classe "campo" com tag <input>, <select> e <textarea> tocas com estado da pseudoclasse "focus"*/
 .campo input:focus {
     background: #E0E0F8;
 }
 
-/* Elemento de classe "botao" */
 .botao {
     font-size: 1.2em;
     background: #0881A3;
     border: 0;
+    border-radius: 15px;
     margin-bottom: 1em;
     color: #ffffff;
     padding: 0.2em 0.6em;
@@ -103,11 +107,8 @@ input[typer="radio"] {
     position: relative;
     top: 10px;
     left: 350px;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
 }
 
-/* Elemento de classe "botao" com o estado da pseudoclasse "hover" */
 .botao:hover {
     background: #3a7c79;
     box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2);
