@@ -22,7 +22,7 @@ export const Dashboard = () => {
     useEffect(() => {
         axios.get('http://localhost:8080/get')
             .then(response => {
-                setTable(response.data);
+                setTable(response.data.reverse());
 
             })
             .catch(error => {
@@ -45,7 +45,7 @@ export const Dashboard = () => {
             }
         }).then(response => {
             if (response.status == 200) {
-                setData(prevData => [...prevData, transaction]);
+                setData(prevData => [transaction, ...prevData]);
             }
         })
     }
