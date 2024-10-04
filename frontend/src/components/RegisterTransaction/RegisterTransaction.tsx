@@ -2,13 +2,14 @@ import { useForm } from 'react-hook-form';
 import './RegisterTransaction.css';
 
 export const RegisterTransaction = (props: {addTransaction: any}) => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const today = new Date().toISOString().split("T")[0];
 
 
     const onSubmit = async (data: any) => {
         try {
             props.addTransaction(data);
+            reset();
         } catch (error) {
             console.error('Erro ao enviar a requisição:', error);
         }
