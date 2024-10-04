@@ -16,6 +16,7 @@
   border-radius: 15px;
   max-height: 150px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #valueCol,
