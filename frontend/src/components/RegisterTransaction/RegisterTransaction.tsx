@@ -3,6 +3,8 @@ import './RegisterTransaction.css';
 
 export const RegisterTransaction = (props: {addTransaction: any}) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const today = new Date().toISOString().split("T")[0];
+
 
     const onSubmit = async (data: any) => {
         try {
@@ -27,7 +29,7 @@ export const RegisterTransaction = (props: {addTransaction: any}) => {
                     <div className="campo">
                         <label htmlFor="date"><strong>Data: </strong></label>
                         <input placeholder="Selecione a data" className={errors?.date && "input-error"} type="date" id="date" required
-                            {...register("date", { required: true })} />
+                            {...register("date", { required: true })} max={today}/>
                         {errors?.date?.type === "required" && <p className='error-message'>A data é obrigatória</p>}
                     </div>
 
