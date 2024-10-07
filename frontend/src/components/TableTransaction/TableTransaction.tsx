@@ -12,8 +12,8 @@ interface Transaction {
   type: string;
 }
 
-export const TableTransaction = (props: { table: Transaction[] , deleteTransaction: any}) => {
-  const { handleSubmit } = useForm(); 
+export const TableTransaction = (props: { table: Transaction[], deleteTransaction: any }) => {
+  const { handleSubmit } = useForm();
 
   const onSubmit = async (id: number) => {
     try {
@@ -30,7 +30,7 @@ export const TableTransaction = (props: { table: Transaction[] , deleteTransacti
 
   return (
     <div id="tableComponent">
-      <ToastContainer/>
+      <ToastContainer />
 
       <Table.Root className="table">
         <Table.Header>
@@ -39,6 +39,7 @@ export const TableTransaction = (props: { table: Transaction[] , deleteTransacti
             <Table.ColumnHeaderCell id="dateCol">Data</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell id="observationCol">Observação</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell id="typeCol">Tipo de movimentação</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell id="actions">Ações</Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
       </Table.Root>
@@ -50,12 +51,14 @@ export const TableTransaction = (props: { table: Transaction[] , deleteTransacti
               <Table.RowHeaderCell id="valueRes">{transaction.value}</Table.RowHeaderCell>
               <Table.RowHeaderCell id="dateRes">{transaction.date}</Table.RowHeaderCell>
               <Table.RowHeaderCell id="obsRes">{transaction.observation}</Table.RowHeaderCell>
-              <Table.RowHeaderCell id="typeRes">{transaction.type}</Table.RowHeaderCell>
+              <Table.RowHeaderCell id={transaction.type === 'Receita' ? 'typeReceita' : 'typeDespesa'}>
+                {transaction.type}
+              </Table.RowHeaderCell>
               <Table.RowHeaderCell>
                 <button className="actionDel" type="submit" onClick={() => handleSubmit(() => onSubmit(transaction.id))()}>
                   <img src="/trash.png" alt="Deletar" style={{ width: '20px', height: '20px' }} />
                 </button>
-                
+
               </Table.RowHeaderCell>
             </Table.Row>
           ))

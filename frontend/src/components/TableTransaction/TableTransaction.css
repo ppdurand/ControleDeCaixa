@@ -22,7 +22,8 @@
 #valueCol,
 #dateCol,
 #observationCol,
-#typeCol {
+#typeCol,
+#actions {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
@@ -79,10 +80,18 @@
   position: absolute;
 }
 
-#typeRes {
+#typeReceita, #typeDespesa {
   left: 774px;
   position: absolute;
   text-align: left;
+}
+
+#typeReceita{
+  color: #203cbb;
+}
+
+#typeDespesa{
+  color: #ad2525
 }
 
 .table {
@@ -111,6 +120,10 @@
   border-radius: 15px;
 }
 
+#actions{
+  left: 1025px;
+  position: absolute
+}
 
 .actionDel {
   top: 50;
