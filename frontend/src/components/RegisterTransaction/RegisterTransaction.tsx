@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
 import './RegisterTransaction.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const RegisterTransaction = (props: {addTransaction: any}) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -9,6 +11,10 @@ export const RegisterTransaction = (props: {addTransaction: any}) => {
     const onSubmit = async (data: any) => {
         try {
             props.addTransaction(data);
+            toast.success("Movimentação feita com sucesso", {
+                position: "top-left",
+                autoClose: 3000,
+            })
             reset();
         } catch (error) {
             console.error('Erro ao enviar a requisição:', error);
@@ -38,13 +44,13 @@ export const RegisterTransaction = (props: {addTransaction: any}) => {
 
                 <div className="campo">
                     <label htmlFor="observation"><strong>Observação: </strong> (opcional)</label>
-                    <input placeholder="Digite a observação" className={errors?.observation && "input-error"} type="text" id="observation" required
+                    <input placeholder="Digite a observação" className={errors?.observation && "input-error"} type="text" id="observation"
                         {...register("observation",  {maxLength: 250})} />
                     {errors?.observation?.type === "maxLength" && <p className='error-message'>Digite menos que 250 caracteres</p>}
                 </div>
 
                 <div className="campoMov">
-                    <label><strong>Tipo de Movimentação: </strong></label>
+                    <p><strong>Tipo de Movimentação: </strong></p>
                     <label>
                         <input type="radio" value="RECEITA" defaultChecked
                             {...register("type")} />Receita

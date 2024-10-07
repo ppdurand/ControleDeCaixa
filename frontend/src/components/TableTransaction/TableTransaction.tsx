@@ -1,6 +1,8 @@
 import './TableTransaction.css';
 import { Table } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Transaction {
   id: number;
@@ -11,19 +13,24 @@ interface Transaction {
 }
 
 export const TableTransaction = (props: { table: Transaction[] , deleteTransaction: any}) => {
-  const { handleSubmit } = useForm();
-
+  const { handleSubmit } = useForm(); 
 
   const onSubmit = async (id: number) => {
     try {
       props.deleteTransaction(id);
+      toast.success("Movimentação deletada!", {
+        position: "bottom-right",
+        autoClose: 2000,
+      })
     } catch (error) {
       console.error('Erro ao enviar a requisição:', error);
+      toast.error("Algo deu errado na deleção da movimentação");
     }
   }
 
   return (
     <div id="tableComponent">
+      <ToastContainer/>
 
       <Table.Root className="table">
         <Table.Header>
@@ -48,6 +55,7 @@ export const TableTransaction = (props: { table: Transaction[] , deleteTransacti
                 <button className="actionDel" type="submit" onClick={() => handleSubmit(() => onSubmit(transaction.id))()}>
                   <img src="/trash.png" alt="Deletar" style={{ width: '20px', height: '20px' }} />
                 </button>
+                
               </Table.RowHeaderCell>
             </Table.Row>
           ))
@@ -56,7 +64,6 @@ export const TableTransaction = (props: { table: Transaction[] , deleteTransacti
             <Table.RowHeaderCell colSpan={4}>Nenhuma transação encontrada</Table.RowHeaderCell>
           </Table.Row>
         )}
-
       </Table.Body>
     </div>
   );

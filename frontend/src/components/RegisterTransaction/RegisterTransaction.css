@@ -46,8 +46,6 @@ input {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-size: 1em;
-    color: #010201;
-    border-radius: 5px;
 }
 
 .campo {
@@ -69,12 +67,22 @@ input {
 .campoMov label {
     margin-bottom: 0.1em;
     color: #010201;
-    display: inline;
+    display: inline-block;
 }
 
 .campoMov label input {
     margin: 5px;
     padding: 5px;
+}
+
+.campoMov input[type="radio"] {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.campoMov strong {
+    display: block;
+    margin-bottom: 0.5em;
 }
 
 fieldset .campo {
@@ -86,10 +94,15 @@ fieldset .campo {
 input[type="number"],
 input[type="date"],
 input[typer="radio"] {
-    padding: 0.1em;
-    border: 1px solid #59429d;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-    display: inline;
+    padding: 10px;
+    color: #7A869A;
+    border-radius: 8px;
+    border: solid  0.1rem #7A8694;
+}
+
+#observation{
+    display: flex; 
+    width: 84%;
 }
 
 .campo input:focus {
@@ -106,9 +119,11 @@ input[typer="radio"] {
     padding: 0.2em 0.6em;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    position: relative;
-    top: 10px;
-    left: 350px;
+    position: absolute;
+    top: 290px;
+    left: 325px;
+    height: 50px;
+    width: 150px;
 }
 
 .botao:hover {
@@ -116,3 +131,4 @@ input[typer="radio"] {
     box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2);
     text-shadow: none;
 }
+
