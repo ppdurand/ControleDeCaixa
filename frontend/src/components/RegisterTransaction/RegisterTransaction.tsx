@@ -23,9 +23,9 @@ export const RegisterTransaction = (props: {addTransaction: any}) => {
 
     return (
         <div className="registerComponent">
-            <h2 id="título">Movimentações</h2>
-            <form id="formulario">
-                <fieldset>
+            <h2 className="título">Movimentações</h2>
+            <form className="formulario">
+                <fieldset className="conteudo">
                     <div className="campo">
                         <label htmlFor="value"><strong>Valor: </strong></label>
                         <input placeholder="Digite o valor" className={errors?.value && "input-error"} type="number" id="value" /* tratando erro */
@@ -53,11 +53,11 @@ export const RegisterTransaction = (props: {addTransaction: any}) => {
                     <p><strong>Tipo de Movimentação: </strong></p>
                     <label>
                         <input type="radio" value="RECEITA" defaultChecked
-                            {...register("type")} />Receita
+                            {...register("type")} /> Receita
                     </label>
                     <label>
                         <input type="radio" value="DESPESA"
-                            {...register("type")} />Despesa
+                            {...register("type")} /> Despesa
                     </label>
                 </div>
             </form>

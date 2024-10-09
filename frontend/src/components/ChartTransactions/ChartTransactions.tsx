@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Chart from "react-google-charts";
-import './ChartTransaction.css';
+import './ChartTransactions.css';
 
 
 export const ChartTransaction = (props: {receita: number, despesa: number}) => {
@@ -12,11 +12,11 @@ export const ChartTransaction = (props: {receita: number, despesa: number}) => {
 
     return (
         <div className="chartComponent">
-            <h1 className="título">Receitas e Despesas</h1>
-            <Chart
+            <h2 className="tituloChart">Receitas e Despesas</h2>
+            <Chart className="charBar"
                 chartType="Bar"
                 width="100%"
-                height="330px"
+                height="300px"
                 data={dataChart}
                 options={{
                     title: 'Receita e Despesa',

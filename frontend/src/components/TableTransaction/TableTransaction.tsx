@@ -1,4 +1,4 @@
-import './TableTransaction.css';
+import './TableFlex.css';
 import { Table } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
@@ -29,45 +29,62 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
   }
 
   return (
-    <div id="tableComponent">
+    <div className="tableComponent">
       <ToastContainer />
-
-      <Table.Root className="table">
-        <Table.Header>
-          <Table.Row>
-            <Table.ColumnHeaderCell id="valueCol">Valor</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell id="dateCol">Data</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell id="observationCol">Observação</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell id="typeCol">Tipo de movimentação</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell id="actions">Ações</Table.ColumnHeaderCell>
-          </Table.Row>
-        </Table.Header>
-      </Table.Root>
-
-      <Table.Body className="response">
+      <div className="columns">
+        <Table.Root className="tablePt1">
+          <Table.Header>
+            <Table.Row>
+              <Table.ColumnHeaderCell className="valueCol">Valor</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell className="dateCol">Data</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell className="observationCol">Observação</Table.ColumnHeaderCell>
+            </Table.Row>
+          </Table.Header>
+        </Table.Root>
+  
+        <Table.Root className="tablePt2">
+          <Table.Header>
+            <Table.Row>
+              <Table.ColumnHeaderCell className="typeCol">Tipo de movimentação</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell className="actions">Ações</Table.ColumnHeaderCell>
+            </Table.Row>
+          </Table.Header>
+        </Table.Root>
+      </div>
+  
+      <div className="response">
         {props.table.length > 0 ? (
           props.table.map((transaction) => (
-            <Table.Row key={transaction.id}>
-              <Table.RowHeaderCell id="valueRes">{transaction.value}</Table.RowHeaderCell>
-              <Table.RowHeaderCell id="dateRes">{transaction.date}</Table.RowHeaderCell>
-              <Table.RowHeaderCell id="obsRes">{transaction.observation}</Table.RowHeaderCell>
-              <Table.RowHeaderCell id={transaction.type === 'Receita' ? 'typeReceita' : 'typeDespesa'}>
-                {transaction.type}
-              </Table.RowHeaderCell>
-              <Table.RowHeaderCell>
-                <button className="actionDel" type="submit" onClick={() => handleSubmit(() => onSubmit(transaction.id))()}>
-                  <img src="/trash.png" alt="Deletar" style={{ width: '20px', height: '20px' }} />
-                </button>
-
-              </Table.RowHeaderCell>
-            </Table.Row>
+            <div className="responseRow" key={transaction.id}>
+              <div className="tablePt1">
+                <Table.Row>
+                  <Table.RowHeaderCell className="valueRes">{transaction.value}</Table.RowHeaderCell>
+                  <Table.RowHeaderCell className="dateRes">{transaction.date}</Table.RowHeaderCell>
+                  <Table.RowHeaderCell className="obsRes">{transaction.observation}</Table.RowHeaderCell>
+                </Table.Row>
+              </div>
+  
+              <div className="tablePt2">
+                <Table.Row>
+                  <Table.RowHeaderCell className={transaction.type === 'Receita' ? 'typeReceita' : 'typeDespesa'}>
+                    {transaction.type}
+                  </Table.RowHeaderCell>
+                  <Table.RowHeaderCell>
+                    <button className="actionDel" type="submit" onClick={() => handleSubmit(() => onSubmit(transaction.id))()}>
+                      <img src="/trash.png" alt="Deletar" style={{ width: '20px', height: '20px' }} />
+                    </button>
+                  </Table.RowHeaderCell>
+                </Table.Row>
+              </div>
+            </div>
           ))
         ) : (
           <Table.Row>
             <Table.RowHeaderCell colSpan={4}>Nenhuma transação encontrada</Table.RowHeaderCell>
           </Table.Row>
         )}
-      </Table.Body>
+      </div>
     </div>
   );
+  
 };

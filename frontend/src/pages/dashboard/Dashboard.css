@@ -1,0 +1,43 @@
+.dashboardContainer {
+    font-family: 'Poppins';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+    margin: 20px;
+}
+
+.register {
+    background-color: #ffffff;
+    width: 458px;
+    height: 362px;
+    border-radius: 15px;
+}
+
+.chart {
+    background-color: #ffffff;
+    width: 583px;
+    height: 362px;
+    border-radius: 15px;
+}
+
+.table {
+    background-color: #ffffff;
+    width: 1200px;
+    height: 159px;
+    border-radius: 15px;
+}
+
+.titleContainer {
+    width: 100%;
+    text-align: flex-start;
+}

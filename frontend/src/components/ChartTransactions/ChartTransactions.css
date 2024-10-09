@@ -1,0 +1,15 @@
+.chartComponent {
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    margin: 20px;
+}
+
+.tituloChart{
+    font-weight: 700;
+    font-style: normal;
+}
+
+.chartBar{
+    margin-left: 0;
+}

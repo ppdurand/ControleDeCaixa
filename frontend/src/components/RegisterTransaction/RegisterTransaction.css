@@ -1,44 +1,16 @@
-* {
-    margin: 0;
-    padding: 0;
+.registerComponent{
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    margin: 20px;
 }
 
-#título {
-    font-family: "Poppins", sans-serif;
+.título{
     font-weight: 700;
     font-style: normal;
-    color: #000000;
-    position: relative;
-    width: 190px;
-    height: 34px;
-    text-align: center;
 }
 
-#formulario {
-    margin-top: 1em;
-}
-
-.registerComponent {
-    background-color: #ffffff;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    color: #010201;
-    position: absolute;
-    width: 458px;
-    height: 355px; /* no figma é 362 */
-    top: 159px;
-    left: 125px;
-    gap: 0px;
-    opacity: 0px;
-    margin-bottom: 25px;
-    justify-content: center;
-    border-radius: 15px;
-    padding: 20px;
-}
-
-
-fieldset {
+fieldset{
     border: 0;
 }
 
@@ -48,68 +20,45 @@ input {
     font-size: 1em;
 }
 
-.campo {
-    margin-top: 1em;
-    margin-bottom: 1em;
+.conteudo{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
 }
 
-.campo label {
-    margin-bottom: 0.2em;
-    color: #010201;
-    display: block;
+.campo{
+    display: flex;
+    flex-direction: column;
 }
 
-.campoMov {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-.campoMov label {
-    margin-bottom: 0.1em;
-    color: #010201;
-    display: inline-block;
-}
-
-.campoMov label input {
-    margin: 5px;
-    padding: 5px;
-}
-
-.campoMov input[type="radio"] {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.campoMov strong {
-    display: block;
-    margin-bottom: 0.5em;
-}
-
-fieldset .campo {
-    float: left;
-    margin-right: 1em;
-}
-
-.campo input[type="text"],
-input[type="number"],
-input[type="date"],
-input[typer="radio"] {
+.campo input{
+    margin-bottom: 20px;
     padding: 10px;
     color: #7A869A;
     border-radius: 8px;
     border: solid  0.1rem #7A8694;
 }
 
-#observation{
-    display: flex; 
-    width: 84%;
+.campo input[type="date"]{
+    width: 90%;
 }
 
-.campo input:focus {
-    background: #E0E0F8;
+.campoMov{
+    margin-bottom: 10px;
+}
+.campoMov label{
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.botao {
+.botao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: end;
+    width: 138px;
+    height: 40px;
     font-size: 1.2em;
     background: #0881A3;
     border: 0;
@@ -117,13 +66,6 @@ input[typer="radio"] {
     margin-bottom: 1em;
     color: #ffffff;
     padding: 0.2em 0.6em;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 290px;
-    left: 280px;
-    height: 50px;
-    width: 150px;
 }
 
 .botao:hover {
@@ -131,4 +73,3 @@ input[typer="radio"] {
     box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2);
     text-shadow: none;
 }
-

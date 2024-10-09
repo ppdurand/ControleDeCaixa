@@ -1,0 +1,74 @@
+.tableComponent {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+}
+
+.columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tablePt1,
+.tablePt2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.valueCol,
+.dateCol,
+.observationCol,
+.typeCol,
+.actions {
+    padding: 10px 20px 10px 10px;
+}
+
+.response {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-style: normal;
+    justify-content: space-between;
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.responseRow {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.valueRes,
+.dateRes,
+.obsRes {
+    padding-left: 20px;
+}
+
+.typeDespesa, .typeReceita{
+    padding-right: 20px;
+}
+
+
+.valueRes, .valueCol {
+    margin: 20px;
+}
+
+.typeReceita {
+    color: #203cbb;
+}
+
+.typeDespesa {
+    color: #ad2525
+}
+
+.actionDel {
+    background: none;
+    border: none;
+    cursor: pointer;
+}

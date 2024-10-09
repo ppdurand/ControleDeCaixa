@@ -4,6 +4,7 @@ import { RegisterTransaction } from "../../components/RegisterTransaction/Regist
 import { TableTransaction } from "../../components/TableTransaction/TableTransaction";
 import { Title } from "../../components/Title/Title";
 import axios from "axios";
+import './Dashboard.css';
 
 interface Transaction {
     id: number;
@@ -30,30 +31,30 @@ export const Dashboard = () => {
             });
 
         axios.get(`http://localhost:8080/getSum`)
-        .then(response => {
-            setReceita(response.data[0]);
-            setDespesa(response.data[1]);
-        });
+            .then(response => {
+                setReceita(response.data[0]);
+                setDespesa(response.data[1]);
+            });
 
     }, [data]);
 
     async function addTransaction(transaction: Transaction) {
 
-        const response = await axios.post('http://localhost:8080/add', transaction, {
+        await axios.post('http://localhost:8080/add', transaction, {
             headers: {
                 "Content-Type": 'application/json'
             }
         }).then(response => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 setData(prevData => [transaction, ...prevData]);
             }
         })
     }
 
     async function deleteTransaction(id: number) {
-        const response = await axios.delete(`http://localhost:8080/delete/${id}`)
+        await axios.delete(`http://localhost:8080/delete/${id}`)
             .then(response => {
-                if (response.status != 200) {
+                if (response.status !== 200) {
                     console.error('Erro ao enviar os dados:', response.statusText);
                 }
             });
@@ -62,11 +63,21 @@ export const Dashboard = () => {
     }
 
     return (
-        <div>
-            <Title />
-            <RegisterTransaction addTransaction={addTransaction} />
-            <TableTransaction table={table} deleteTransaction={deleteTransaction} />
-            <ChartTransaction receita={receita} despesa={despesa} />
+        <div className="dashboardContainer">
+            <div className="titleContainer">
+                <Title />
+            </div>
+            <div className="content">
+                <div className="register">
+                    <RegisterTransaction addTransaction={addTransaction} />
+                </div>
+                <div className="chart">
+                    <ChartTransaction receita={receita} despesa={despesa} />
+                </div>
+            </div>
+            <div className="table">
+                <TableTransaction table={table} deleteTransaction={deleteTransaction} />
+            </div>
         </div>
     );
 }

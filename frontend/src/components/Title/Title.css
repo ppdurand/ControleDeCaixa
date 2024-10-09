@@ -1,27 +1,7 @@
-* {
-    margin: 0;
-    padding: 0
-}
-
 #title {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
-    position: absolute;
-    left: 0%;
-    right: -35.44%;
-    top: 0%;
-    bottom: 49.02%;
-    color: #0E1227;
-}
-
-.component {
-    position: absolute;
-    width: 279px;
-    height: 41px;
-    left: 125px;
-    top: 91px;
-
+    margin: 20px;
+    padding: 20px;
 }
