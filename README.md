@@ -12,7 +12,7 @@ docker-compose up
 
 Agora acesse a rota 'http://localhost:3000' em seu navegador
 
-ATENÇÃO: O projeto usa as portas 3306 (MySQL), 8080 (Spring) e 3000 (React). Então garanta que essas portas estejam disponíveis e que nenhum serviço esteja rodando em nenhuma dessas portas.
+ATENÇÃO: O projeto usa as portas 3306 (MySQL), 8080 (Spring) e 3000 (React). Então garanta que essas portas estejam disponíveis e que nenhum serviço esteja rodando em nenhuma dessas portas. Caso você já tenha o MySQL instalado, é muito provável que ele esteja rodando na porta 3306, então parar seu serviço é essencial.
 
 ## Tecnologias usadas
 - Java
