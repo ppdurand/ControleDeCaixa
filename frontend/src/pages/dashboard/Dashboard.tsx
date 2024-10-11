@@ -26,10 +26,6 @@ export const Dashboard = () => {
                 setTable(response.data.reverse());
 
             })
-            .catch(error => {
-                console.error('Erro ao buscar os dados:', error);
-            });
-
         axios.get(`http://localhost:8080/getSum`)
             .then(response => {
                 setReceita(response.data[0]);
@@ -52,13 +48,7 @@ export const Dashboard = () => {
     }
 
     async function deleteTransaction(id: number) {
-        await axios.delete(`http://localhost:8080/delete/${id}`)
-            .then(response => {
-                if (response.status !== 200) {
-                    console.error('Erro ao enviar os dados:', response.statusText);
-                }
-            });
-        console.log('Dados enviados com sucesso!');
+        await axios.delete(`http://localhost:8080/delete/${id}`);
         setData((prevData) => prevData.filter(transaction => transaction.id !== id));
     }
 

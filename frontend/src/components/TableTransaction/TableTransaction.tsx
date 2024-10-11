@@ -29,7 +29,8 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
   }
 
   return (
-    <div >
+    <div>
+      <ToastContainer/>
       <table className='tableComponent'>
         <thead className='columns'>
           <div className='tablePt1'>
@@ -72,62 +73,4 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
       </table>
     </div>
   );
-  //   <div className="tableComponent">
-  //     <ToastContainer />
-  //     <div className="columns">
-  //       <Table.Root className="tablePt1">
-  //         <Table.Header>
-  //           <Table.Row>
-  //             <Table.ColumnHeaderCell className="valueCol">Valor</Table.ColumnHeaderCell>
-  //             <Table.ColumnHeaderCell className="dateCol">Data</Table.ColumnHeaderCell>
-  //             <Table.ColumnHeaderCell className="observationCol">Observação</Table.ColumnHeaderCell>
-  //           </Table.Row>
-  //         </Table.Header>
-  //       </Table.Root>
-
-  //       <Table.Root className="tablePt2">
-  //         <Table.Header>
-  //           <Table.Row>
-  //             <Table.ColumnHeaderCell className="typeCol">Tipo de movimentação</Table.ColumnHeaderCell>
-  //             <Table.ColumnHeaderCell className="actions">Ações</Table.ColumnHeaderCell>
-  //           </Table.Row>
-  //         </Table.Header>
-  //       </Table.Root>
-  //     </div>
-
-  //     <div className="response">
-  //       {props.table.length > 0 ? (
-  //         props.table.map((transaction) => (
-  //           <div className="responseRow" key={transaction.id}>
-  //             <div className="tablePt1">
-  //               <Table.Row>
-  //                 <Table.RowHeaderCell className="valueRes">R$ {transaction.value}</Table.RowHeaderCell>
-  //                 <Table.RowHeaderCell className="dateRes">{transaction.date}</Table.RowHeaderCell>
-  //                 <Table.RowHeaderCell className="obsRes">{transaction.observation}</Table.RowHeaderCell>
-  //               </Table.Row>
-  //             </div>
-
-  //             <div className="tablePt2">
-  //               <Table.Row>
-  //                 <Table.RowHeaderCell className={transaction.type === 'Receita' ? 'typeReceita' : 'typeDespesa'}>
-  //                   {transaction.type}
-  //                 </Table.RowHeaderCell>
-  //                 <Table.RowHeaderCell>
-  //                   <button className="actionDel" type="submit" onClick={() => handleSubmit(() => onSubmit(transaction.id))()}>
-  //                     <img src="/trash.png" alt="Deletar" style={{ width: '20px', height: '20px' }} />
-  //                   </button>
-  //                 </Table.RowHeaderCell>
-  //               </Table.Row>
-  //             </div>
-  //           </div>
-  //         ))
-  //       ) : (
-  //         <Table.Row>
-  //           <Table.RowHeaderCell colSpan={4}>Nenhuma transação encontrada</Table.RowHeaderCell>
-  //         </Table.Row>
-  //       )}
-  //     </div>
-  //   </div>
-  // );
-
 };

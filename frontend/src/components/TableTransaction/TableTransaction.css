@@ -21,7 +21,7 @@
 
 .valueCol,
 .typeCol, .actions{
-    padding: 10px 20px 5px 20px;
+    padding: 10px 20px 5px 25px;
 }
 .dateCol{
     padding: 10px 50px 5px 50px;
@@ -36,7 +36,7 @@
     font-weight: 600;
     font-style: normal;
     justify-content: space-between;
-    max-height: 100px;
+    max-height: 110px;
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-color: #0889a3 #ffffff;
@@ -57,7 +57,7 @@
 .valueRes{
     justify-content: center;
     padding: 10px 20px 5px 20px;;
-    width: 50px;
+    width: 60px;
     max-width: auto;
     overflow-x: auto;
 }
@@ -71,7 +71,7 @@
 .obsRes{
     padding: 10px 20px 5px 30px;
     width: 650px;
-    max-width: auto;
+    max-width: 100%;
     overflow-x: auto;
 }
 
@@ -93,6 +93,7 @@
 
 .actionDel {
     width: 50px;
+    background: none;
     border: none;
     cursor: pointer;
 }

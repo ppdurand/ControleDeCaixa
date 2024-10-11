@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import './RegisterTransaction.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const RegisterTransaction = (props: {addTransaction: any}) => {
@@ -17,12 +17,16 @@ export const RegisterTransaction = (props: {addTransaction: any}) => {
             })
             reset();
         } catch (error) {
-            console.error('Erro ao enviar a requisição:', error);
+            toast.error("Não foi possivel realizar a movimentação", {
+                position: "top-left",
+                autoClose: 3000,
+            })
         }
     }
 
     return (
         <div className="registerComponent">
+            <ToastContainer/>
             <h2 className="título">Movimentações</h2>
             <form className="formulario">
                 <fieldset className="conteudo">
