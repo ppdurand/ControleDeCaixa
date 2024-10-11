@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import Chart from "react-google-charts";
 import './ChartTransactions.css';
 
