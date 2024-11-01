@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import 'antd/dist/antd.css';
 
 function App() {
   return (

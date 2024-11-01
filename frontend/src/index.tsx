@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import { ConfigProvider } from 'antd';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -25,9 +26,9 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <ConfigProvider>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </ConfigProvider>
 );
 
 reportWebVitals();

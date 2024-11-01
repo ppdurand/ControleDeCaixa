@@ -23,11 +23,3 @@ services:
       - SPRING_DATASOURCE_PASSWORD=mysql123study
     depends_on:
       - mysql-db
-
-  spa-app:
-    container_name: react
-    image: pedrodurand/frontend-controlecaixa:latest
-    ports:
-      - "3000:3000"
-    depends_on:
-      - spring-app
