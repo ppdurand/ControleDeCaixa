@@ -1,8 +1,7 @@
 import './TableTransaction.css';
 import { Button, Table } from "antd";
-import type { TableProps } from 'antd';
+import type { TableColumnsType, TableProps } from 'antd';
 import 'react-toastify/dist/ReactToastify.css';
-import { table } from 'console';
 
 interface Transaction {
   id: number;
@@ -13,11 +12,12 @@ interface Transaction {
 }
 
 export const TableTransaction = (props: { table: Transaction[], deleteTransaction: any }) => {
-  const columns: TableProps<Transaction>['columns'] = [
+  const columns: TableColumnsType<Transaction> = [
     {
       title: "Valor",
       dataIndex: "value",
-      key: "value"
+      key: "value",
+      sorter: (a, b) => a.value - b.value
     },
     {
       title: "Data",
@@ -32,7 +32,19 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
     {
       title: "Tipo de Movimentação",
       dataIndex: "type",
-      key: "type"
+      key: "type",
+      filters:
+        [
+          {
+            text: 'Receita',
+            value: 'Receita'
+          },
+          {
+            text: 'Despesa',
+            value: 'Despesa'
+          },
+        ],
+        onFilter: (value, record) => record.type.indexOf(value as string) === 0,
     },
     {
       title: "Ações",
@@ -45,15 +57,14 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
     }
   ]
 
-  const onSubmit = async (id: number) => {
-    try {
-      props.deleteTransaction(id);
-    } catch (error) {}
-  }
+  const onChange: TableProps<Transaction>['onChange'] = (pagination, filters, sorter, extra) => {};
+
+
 
   return (
     <div>
-      <Table columns={columns} dataSource={props.table} rowKey="id"></Table>
+      <Table columns={columns} dataSource={props.table} rowKey="id" 
+      onChange={onChange} showSorterTooltip={{ target: 'sorter-icon' }}></Table>
     </div>
   );
 };
