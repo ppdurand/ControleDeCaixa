@@ -1,7 +1,14 @@
 import './TableTransaction.css';
-import { Button, Table } from "antd";
+import { Button, DatePicker, Table } from "antd";
 import type { TableColumnsType, TableProps } from 'antd';
+import moment, { Moment } from 'moment';
+import { useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
+import type { RangePickerProps } from 'antd/es/date-picker';
+
+
+
+const { RangePicker } = DatePicker;
 
 interface Transaction {
   id: number;
@@ -11,7 +18,27 @@ interface Transaction {
   type: string;
 }
 
+
 export const TableTransaction = (props: { table: Transaction[], deleteTransaction: any }) => {
+  const [filteredDate, setFilteredData] = useState<Transaction[]>(props.table);
+
+    const onChangeFilter: RangePickerProps['onChange'] = (dates, dateStrings) => {
+      if (dates) {
+        const [startString, endString] = dateStrings;
+        const start = moment(startString)
+        const end = moment(endString)
+        const filteredDates = props.table.filter((transaction: Transaction) => {
+          const transactionDate = moment(transaction.date);
+          return transactionDate.isBetween(start, end, 'day', '[]');
+        });
+        setFilteredData(filteredDates);
+      } else {
+        setFilteredData(props.table);
+      }
+    };
+
+  const onChange: TableProps<Transaction>['onChange'] = (pagination, filters, sorter, extra) => { };
+
   const columns: TableColumnsType<Transaction> = [
     {
       title: "Valor",
@@ -22,7 +49,10 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
     {
       title: "Data",
       dataIndex: "date",
-      key: "date"
+      key: "date",
+      render: (date: string) => moment(date).format("YYYY-MM-DD"),
+      filterDropdown: () => (
+        <RangePicker onChange={onChangeFilter}/>)
     },
     {
       title: "Observação",
@@ -44,7 +74,7 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
             value: 'Despesa'
           },
         ],
-        onFilter: (value, record) => record.type.indexOf(value as string) === 0,
+      onFilter: (value, record) => record.type.indexOf(value as string) === 0,
     },
     {
       title: "Ações",
@@ -57,14 +87,10 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
     }
   ]
 
-  const onChange: TableProps<Transaction>['onChange'] = (pagination, filters, sorter, extra) => {};
-
-
-
   return (
     <div>
-      <Table columns={columns} dataSource={props.table} rowKey="id" 
-      onChange={onChange} showSorterTooltip={{ target: 'sorter-icon' }}></Table>
+      <Table columns={columns} dataSource={filteredDate} rowKey="id"
+        onChange={onChange} showSorterTooltip={{ target: 'sorter-icon' }}></Table>
     </div>
   );
 };
