@@ -32,7 +32,7 @@ input {
     flex-direction: column;
 }
 
-.campo input{
+.campoInput{
     margin-bottom: 20px;
     padding: 10px;
     color: #7A869A;
