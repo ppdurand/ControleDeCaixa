@@ -52,7 +52,10 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
       key: "date",
       render: (date: string) => moment(date).format("YYYY-MM-DD"),
       filterDropdown: () => (
-        <RangePicker onChange={onChangeFilter}/>)
+        <RangePicker onChange={onChangeFilter}/>),
+        onFilterDropdownVisibleChange: (visible) => {
+          if (!visible) setFilteredData(props.table);
+        }
     },
     {
       title: "Observação",
