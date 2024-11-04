@@ -24,7 +24,6 @@ export const Dashboard = () => {
         axios.get('http://localhost:8080/get')
             .then(response => {
                 setTable(response.data.reverse());
-
             })
         axios.get(`http://localhost:8080/getSum`)
             .then(response => {
