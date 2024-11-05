@@ -2,7 +2,7 @@ import './TableTransaction.css';
 import { Button, DatePicker, Table } from "antd";
 import type { TableColumnsType, TableProps } from 'antd';
 import moment, { Moment } from 'moment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import type { RangePickerProps } from 'antd/es/date-picker';
 
@@ -20,22 +20,26 @@ interface Transaction {
 
 
 export const TableTransaction = (props: { table: Transaction[], deleteTransaction: any }) => {
-  const [filteredDate, setFilteredData] = useState<Transaction[]>(props.table);
+  const [filteredDate, setFilteredData] = useState<Transaction[]>();
 
-    const onChangeFilter: RangePickerProps['onChange'] = (dates, dateStrings) => {
-      if (dates) {
-        const [startString, endString] = dateStrings;
-        const start = moment(startString)
-        const end = moment(endString)
-        const filteredDates = props.table.filter((transaction: Transaction) => {
-          const transactionDate = moment(transaction.date);
-          return transactionDate.isBetween(start, end, 'day', '[]');
-        });
-        setFilteredData(filteredDates);
-      } else {
-        setFilteredData(props.table);
-      }
-    };
+  useEffect(() => {
+    setFilteredData(props.table);
+  }, [props.table])
+
+  const onChangeFilter: RangePickerProps['onChange'] = (dates, dateStrings) => {
+    if (dates) {
+      const [startString, endString] = dateStrings;
+      const start = moment(startString)
+      const end = moment(endString)
+      const filteredDates = props.table.filter((transaction: Transaction) => {
+        const transactionDate = moment(transaction.date);
+        return transactionDate.isBetween(start, end, 'day', '[]');
+      });
+      setFilteredData(filteredDates);
+    } else {
+      setFilteredData(props.table);
+    }
+  };
 
   const onChange: TableProps<Transaction>['onChange'] = (pagination, filters, sorter, extra) => { };
 
@@ -50,12 +54,12 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
       title: "Data",
       dataIndex: "date",
       key: "date",
-      render: (date: string) => moment(date).format("YYYY-MM-DD"),
+      render: (date: string) => moment(date).format("DD/MM/YYYY"),
       filterDropdown: () => (
         <RangePicker onChange={onChangeFilter}/>),
-        onFilterDropdownVisibleChange: (visible) => {
-          if (!visible) setFilteredData(props.table);
-        }
+      onFilterDropdownVisibleChange: (visible) => {
+        if (!visible) setFilteredData(props.table);
+      }
     },
     {
       title: "Observação",

@@ -5,58 +5,48 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 
 export const RegisterTransaction = (props: { addTransaction: any }) => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const today = new Date().toISOString().split("T")[0];
+    const { formState: { errors }, reset } = useForm();
+    const [form] = Form.useForm();
 
+    const dateFormat = "DD/MM/YYYY";
     const onSubmit = async (data: any) => {
         try {
             console.log(data)
-            props.addTransaction({ ...data, date: selectedDate });
-            reset();
+            props.addTransaction({ ...data });
+            form.resetFields();
         } catch (error) {
             console.log(error)
         }
     }
 
-    const [selectedDate, setSelectedDate] = useState(null);
-
-    const handleDateConverter = (date: any) => {
-        if (date) {
-            const dateConverted = date.toDate()
-            setSelectedDate(dateConverted)
-            console.log(dateConverted);
-        }
-        else {
-            setSelectedDate(null)
-        }
-    }
 
     return (
         <div className="registerComponent">
             <h2 className="título">Movimentações</h2>
-            <Form layout='vertical' onFinish={onSubmit}>
+            <Form layout='vertical' onFinish={onSubmit} form={form}>
                 <Row gutter={10}>
-                    <Col>
-                        <Form.Item
+                    <Col span={12}>
+                        <Form.Item className='campo'
                             name='value'
                             label="Valor"
                             rules={[{ required: true, message: 'Informe o valor' }]}>
-                            <InputNumber min={1} placeholder='Digite um valor' />
+                            <InputNumber style={{ width: 200 }} min={1} placeholder='Digite um valor' />
                         </Form.Item>
                     </Col>
-                    <Col>
-                        <Form.Item name='date' label="Data"
+                    <Col span={12}>
+                        <Form.Item className='campo' name='date' label="Data"
                             rules={[{ required: true, message: 'Informe a data' }]}>
 
-                            <DatePicker placeholder='Informe uma data'
-                                onChange={handleDateConverter} />
+                            <DatePicker style={{ width: 200 }}
+                                placeholder='Informe uma data' 
+                                format={dateFormat}/>
 
                         </Form.Item>
                     </Col>
                 </Row>
 
                 <Form.Item name='observation' label="Observação">
-                    <Input placeholder='Digite uma observação'></Input>
+                    <Input style={{ width: 430 }} placeholder='Digite uma observação'></Input>
                 </Form.Item>
                 <Form.Item name='type' label="Tipo de Movimentação"
                     rules={[{ required: true, message: "Selecione o tipo de movimentação" }]}>
@@ -67,7 +57,7 @@ export const RegisterTransaction = (props: { addTransaction: any }) => {
                         </Space>
                     </Radio.Group>
                 </Form.Item>
-                <Row>
+                <Row justify='end'>
                     <Button type="primary" htmlType='submit'>Enviar</Button>
                 </Row>
             </Form>

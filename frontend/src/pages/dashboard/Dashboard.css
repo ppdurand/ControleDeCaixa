@@ -19,8 +19,10 @@
 .register {
     background-color: #ffffff;
     width: 458px;
-    height: 362px;
+    height: 343px;
     border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
 }
 
 .chart {
@@ -28,10 +30,11 @@
     width: 583px;
     height: 362px;
     border-radius: 15px;
+    margin: 10px
 }
 
 .table {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     width: 100%;
     height: 159px;
     border-radius: 15px;
