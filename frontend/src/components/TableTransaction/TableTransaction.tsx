@@ -21,14 +21,15 @@ interface Transaction {
 
 export const TableTransaction = (props: { table: Transaction[], deleteTransaction: any }) => {
   const [filteredDate, setFilteredData] = useState<Transaction[]>();
+  const [selectedDates, setSelectedDates] = useState<[moment.Moment | null, moment.Moment | null] | null>(null);
 
   useEffect(() => {
     setFilteredData(props.table);
   }, [props.table])
 
-  const onChangeFilter: RangePickerProps['onChange'] = (dates, dateStrings) => {
-    if (dates) {
-      const [startString, endString] = dateStrings;
+  const onChangeFilter = () => {
+    if (selectedDates && selectedDates[0] && selectedDates[1]) {
+      const [startString, endString] = selectedDates;
       const start = moment(startString)
       const end = moment(endString)
       const filteredDates = props.table.filter((transaction: Transaction) => {
@@ -40,6 +41,10 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
       setFilteredData(props.table);
     }
   };
+  const handleDateChange: RangePickerProps['onChange'] = (dates: any) => {
+    setSelectedDates(dates);
+  };
+
 
   const onChange: TableProps<Transaction>['onChange'] = (pagination, filters, sorter, extra) => { };
 
@@ -56,10 +61,16 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
       key: "date",
       render: (date: string) => moment(date).format("DD/MM/YYYY"),
       filterDropdown: () => (
-        <RangePicker onChange={onChangeFilter}/>),
-      onFilterDropdownVisibleChange: (visible) => {
-        if (!visible) setFilteredData(props.table);
-      }
+        <div>
+          <RangePicker
+            format={"DD/MM/YYYY"}
+            size={"large"}
+            onChange={handleDateChange}
+          />
+          <Button type="primary" size={"large"} onClick={onChangeFilter}>
+            Filtrar
+          </Button>
+        </div>)
     },
     {
       title: "Observação",
