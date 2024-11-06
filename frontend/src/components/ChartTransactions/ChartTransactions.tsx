@@ -13,11 +13,7 @@ export const ChartTransaction = (props: { receita: number, despesa: number }) =>
         xField: 'type',
         yField: 'value',
         colorField: 'type',
-        color: '#00FF7F' + '#B22222',
-        // onReady: (plot: { chart: G2.Chart }) => {
-        //     const { chart } = plot;
-        //     chart.on('afterrender', () => { });
-        // }
+        color: ['#00FF7F', '#B22222']
     }
     return (
         <div className="chartComponent">
