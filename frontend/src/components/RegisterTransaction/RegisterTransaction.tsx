@@ -1,11 +1,9 @@
-import { useForm } from 'react-hook-form';
 import { Button, Form, Input, DatePicker, InputNumber, DatePickerProps, Space, Radio, Row, Col } from 'antd';
-// import './RegisterTransaction.css';
-import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
+import './RegisterTransaction.css';
+
 
 export const RegisterTransaction = (props: { addTransaction: any }) => {
-    const { formState: { errors }, reset } = useForm();
+
     const [form] = Form.useForm();
 
     const dateFormat = "DD/MM/YYYY";
@@ -28,27 +26,29 @@ export const RegisterTransaction = (props: { addTransaction: any }) => {
                     <Col span={12}>
                         <Form.Item className='campo'
                             name='value'
-                            label="Valor"
+                            label={<span style={{fontWeight: 'bold'}}>Valor</span>}
                             rules={[{ required: true, message: 'Informe o valor' }]}>
-                            <InputNumber style={{ width: 200 }} min={1} placeholder='Digite um valor' />
+                            <InputNumber className='input' style={{ width: 200 }} min={1} placeholder='Digite um valor' />
                         </Form.Item>
                     </Col>
                     <Col span={12}>
-                        <Form.Item className='campo' name='date' label="Data"
+                        <Form.Item className='campo' name='date' label={<span style={{fontWeight: 'bold'}}>Data</span>}
                             rules={[{ required: true, message: 'Informe a data' }]}>
 
-                            <DatePicker style={{ width: 200 }}
-                                placeholder='Informe uma data' 
-                                format={dateFormat}/>
+                            <DatePicker className='input' style={{ width: 200 }}
+                                placeholder='Informe uma data'
+                                format={dateFormat} />
 
                         </Form.Item>
                     </Col>
                 </Row>
 
-                <Form.Item name='observation' label="Observação">
-                    <Input style={{ width: 430 }} placeholder='Digite uma observação'></Input>
+                <Form.Item className='campo' name='observation' 
+                label={<span style={{fontWeight: 'bold'}}>Observação</span>}>
+                    <Input className='input' style={{ width: 400 }} placeholder=' Digite uma observação'></Input>
                 </Form.Item>
-                <Form.Item name='type' label="Tipo de Movimentação"
+                <Form.Item className='campo' name='type' 
+                label={<span style={{fontWeight: 'bold'}}>Tipo de Movimentação</span>}
                     rules={[{ required: true, message: "Selecione o tipo de movimentação" }]}>
                     <Radio.Group>
                         <Space direction="horizontal">
@@ -58,10 +58,10 @@ export const RegisterTransaction = (props: { addTransaction: any }) => {
                     </Radio.Group>
                 </Form.Item>
                 <Row justify='end'>
-                    <Button type="primary" htmlType='submit'>Enviar</Button>
+                    <Button className='botao' type="primary" htmlType='submit'>Enviar</Button>
                 </Row>
             </Form>
 
-        </div>
+        </div >
     )
 }

@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     /* width: 100%; */
-    padding: 20px 125px;
+    padding: 10px 125px;
     gap: 20px;
 }
 
@@ -13,16 +13,15 @@
     justify-content: space-between;
     width: 100%;
     margin-top: 20px;
-    margin: 20px;
+    margin-bottom: 10px;
 }
 
 .register {
     background-color: #ffffff;
     width: 458px;
-    height: 343px;
+    height: 362px;
     border-radius: 15px;
     margin: 10px;
-    padding: 10px;
 }
 
 .chart {
@@ -34,10 +33,10 @@
 }
 
 .table {
-    /* background-color: #ffffff; */
     width: 100%;
     height: 159px;
     border-radius: 15px;
+    margin: 10px;
 }
 
 .titleContainer {

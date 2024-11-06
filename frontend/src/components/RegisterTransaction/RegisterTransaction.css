@@ -3,7 +3,6 @@
     flex-direction: column;
     font-family: "Poppins", sans-serif;
     margin: 20px;
-    padding: 20px;
 }
 
 .título{
@@ -54,10 +53,7 @@ input {
 }
 
 .botao{
-    display: flex;
     justify-content: center;
-    align-items: center;
-    align-self: end;
     width: 138px;
     height: 40px;
     font-size: 1.2em;
