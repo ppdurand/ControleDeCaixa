@@ -1,5 +1,5 @@
 import './ChartTransactions.css';
-import { Column, G2, Chart} from "@ant-design/plots";
+import { Column, G2, Chart } from "@ant-design/plots";
 
 
 export const ChartTransaction = (props: { receita: number, despesa: number }) => {
@@ -12,19 +12,12 @@ export const ChartTransaction = (props: { receita: number, despesa: number }) =>
         data,
         xField: 'type',
         yField: 'value',
-        group: true, colorField: 'type',
-        color: ['#5353EC', '#FF4D4F'],
-        style: {
-            inset: 5,
-        },
-        onReady: (plot: { chart: G2.Chart }) => {
-            const {chart} = plot;
-            try {
-                chart.on('afterrender', () => {});
-            } catch (e) {
-                console.error(e);
-            }
-        }
+        colorField: 'type',
+        color: '#00FF7F' + '#B22222',
+        // onReady: (plot: { chart: G2.Chart }) => {
+        //     const { chart } = plot;
+        //     chart.on('afterrender', () => { });
+        // }
     }
     return (
         <div className="chartComponent">
