@@ -1,5 +1,5 @@
 import './TableTransaction.css';
-import { Button, DatePicker, Table } from "antd";
+import { Button, DatePicker, Table, Tag } from "antd";
 import type { TableColumnsType, TableProps } from 'antd';
 import moment, { Moment } from 'moment';
 import { useEffect, useState } from 'react';
@@ -93,13 +93,16 @@ export const TableTransaction = (props: { table: Transaction[], deleteTransactio
           },
         ],
       onFilter: (value, record) => record.type.indexOf(value as string) === 0,
+      render: (text) => (
+        <Tag color={text === 'Receita' ? 'green' : 'red'}>{text}</Tag>
+      ),
     },
     {
       title: "Ações",
       key: "actions",
       render: (_, record) => (
         <Button type="link" onClick={() => props.deleteTransaction(record.id)}>
-          Excluir
+          <img src="/trash.png" alt="Deletar" style={{ width: '20px', height: '20px' }} />
         </Button>
       )
     }
