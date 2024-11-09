@@ -1,4 +1,3 @@
-import './TableTransaction.css';
 import { Button, DatePicker, Table, Tag } from "antd";
 import type { TableColumnsType, TableProps } from 'antd';
 import moment, { Moment } from 'moment';
