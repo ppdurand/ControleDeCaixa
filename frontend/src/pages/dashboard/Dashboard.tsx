@@ -19,6 +19,7 @@ export const Dashboard = () => {
     const [table, setTable] = useState<Transaction[]>([])
     const [receita, setReceita] = useState<number>(0)
     const [despesa, setDespesa] = useState<number>(0)
+    const [graph, setGraph] = useState<{ type: string; value: number }[]>([]);
 
     useEffect(() => {
         axios.get('http://localhost:8080/get')
@@ -30,8 +31,14 @@ export const Dashboard = () => {
                 setReceita(response.data[0]);
                 setDespesa(response.data[1]);
             });
-
     }, [data]);
+
+    useEffect(() => {
+        setGraph([
+            { type: 'Receita', value: receita },
+            { type: 'Despesa', value: despesa }
+        ]);
+    }, [receita, despesa]);
 
     async function addTransaction(transaction: Transaction) {
 
@@ -61,7 +68,7 @@ export const Dashboard = () => {
                     <RegisterTransaction addTransaction={addTransaction} />
                 </div>
                 <div className="chart">
-                    <ChartTransaction receita={receita} despesa={despesa} />
+                    <ChartTransaction graph={graph} />
                 </div>
             </div>
             <div className="table">

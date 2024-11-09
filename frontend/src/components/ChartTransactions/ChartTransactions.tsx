@@ -1,15 +1,10 @@
 import './ChartTransactions.css';
-import { Column, G2, Chart } from "@ant-design/plots";
+import { Column, G2, Chart, Pie } from "@ant-design/plots";
 
 
-export const ChartTransaction = (props: { receita: number, despesa: number }) => {
-    const data = [
-        { type: 'Receita', value: props.receita },
-        { type: 'Despesa', value: props.despesa }
-    ];
-
+export const ChartTransaction = (props: { graph: any }) => {
     const config = {
-        data,
+        data: props.graph,
         xField: 'type',
         yField: 'value',
         colorField: 'type',
