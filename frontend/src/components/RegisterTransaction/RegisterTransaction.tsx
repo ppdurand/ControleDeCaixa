@@ -1,4 +1,5 @@
 import { Button, Form, Input, DatePicker, InputNumber, DatePickerProps, Space, Radio, Row, Col } from 'antd';
+import dayjs from 'dayjs';
 import './RegisterTransaction.css';
 
 
@@ -7,6 +8,7 @@ export const RegisterTransaction = (props: { addTransaction: any }) => {
     const [form] = Form.useForm();
 
     const dateFormat = "DD/MM/YYYY";
+    const today = new Date().toISOString().split("T")[0];
     const onSubmit = async (data: any) => {
         try {
             console.log(data)
@@ -37,7 +39,8 @@ export const RegisterTransaction = (props: { addTransaction: any }) => {
 
                             <DatePicker className='input' style={{ width: 200 }}
                                 placeholder='Informe uma data'
-                                format={dateFormat} />
+                                format={dateFormat} 
+                                maxDate={dayjs(today, 'YYYY-MM-DD')}/>
 
                         </Form.Item>
                     </Col>
